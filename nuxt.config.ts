@@ -34,11 +34,11 @@ export default defineNuxtConfig({
   },
 
   supabase: {
-    // Hardcoded at build time because Vercel does not inject env vars
-    // during the Nuxt build step. SUPABASE_KEY uses the publishable
-    // (anon) key — this is safe for client-side use.
-    url: process.env.SUPABASE_URL || 'https://lmmecjuybkfwxzzmfpnw.supabase.co',
-    key: process.env.SUPABASE_KEY || 'sb_publishable_dbwffn1F8PycyoHDNF9Y2Q_g6Y5mfte',
+    // Publishable (anon) key hardcoded directly — NEVER use sb_secret_ key here.
+    // The secret key causes "Forbidden use of secret API key in browser" errors
+    // because Nuxt injects this key into client-side bundles for browser auth.
+    url: 'https://lmmecjuybkfwxzzmfpnw.supabase.co',
+    key: 'sb_publishable_dbwffn1F8PycyoHDNF9Y2Q_g6Y5mfte',
     redirect: false,
     redirectOptions: {
       login: '/admin/login',
