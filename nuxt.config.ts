@@ -34,8 +34,11 @@ export default defineNuxtConfig({
   },
 
   supabase: {
-    url: process.env.SUPABASE_URL,
-    key: process.env.SUPABASE_KEY,
+    // Hardcoded at build time because Vercel does not inject env vars
+    // during the Nuxt build step. SUPABASE_KEY uses the publishable
+    // (anon) key — this is safe for client-side use.
+    url: process.env.SUPABASE_URL || 'https://lmmecjuybkfwxzzmfpnw.supabase.co',
+    key: process.env.SUPABASE_KEY || 'sb_publishable_dbwffn1F8PycyoHDNF9Y2Q_g6Y5mfte',
     redirect: false,
     redirectOptions: {
       login: '/admin/login',
