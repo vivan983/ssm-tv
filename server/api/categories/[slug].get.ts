@@ -1,6 +1,6 @@
-// BUG FIX: Use useSupabaseAdmin() (service role) instead of useSupabaseServer()
-// (anon key) because the profiles table RLS blocks the anon role from reading
-// author profiles when joining. The admin client is safe — server-side only.
+// Category articles endpoint — resilient pattern.
+// Fetches articles for a category without joining profiles (avoids RLS issues).
+// Returns empty articles array on any error instead of throwing 500.
 import { useSupabaseAdmin } from '../../utils/supabase-admin'
 
 export default defineEventHandler(async (event) => {
@@ -13,82 +13,101 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'Slug is required' })
   }
 
-  const dbSlug = rawSlug
-
   const supabase = useSupabaseAdmin()
 
-  // BUG FIX: Use .ilike() instead of .eq() for case-insensitive slug matching.
-  // Category slugs in the database are UPPERCASE (POLITIKI, UBUCURUZI, etc.)
-  // but URL routes are lowercase (/category/politiki). PostgreSQL's eq() is
-  // case-sensitive, so the lookup always failed and returned empty articles.
-  const { data: category, error: catError } = await supabase
-    .from('categories')
-    .select(`*, translations:category_translations(*)`)
-    .ilike('slug', dbSlug)
-    .maybeSingle()
+  try {
+    // Look up category by slug (case-insensitive)
+    const { data: category, error: catError } = await supabase
+      .from('categories')
+      .select(`*, translations:category_translations(*)`)
+      .ilike('slug', rawSlug)
+      .maybeSingle()
 
-  // BUG FIX: Return empty articles instead of 404 when category doesn't exist.
-  // This handles the case where seed data hasn't been run yet — the page
-  // shows a professional empty state rather than an error.
-  if (catError) {
-    throw createError({ statusCode: 500, statusMessage: 'Failed to look up category' })
-  }
+    if (catError) {
+      console.error('[category/slug] Category lookup error:', catError.message)
+      return {
+        data: { name: rawSlug, description: null, slug: rawSlug },
+        articles: [],
+        total: 0,
+        page,
+        totalPages: 0,
+      }
+    }
 
-  if (!category) {
+    if (!category) {
+      return {
+        data: { name: rawSlug, description: null, slug: rawSlug },
+        articles: [],
+        total: 0,
+        page,
+        totalPages: 0,
+      }
+    }
+
+    const offset = (page - 1) * perPage
+
+    // Fetch articles WITHOUT joining profiles (avoids RLS failures)
+    const { data: articles, error, count } = await supabase
+      .from('articles')
+      .select('*', { count: 'exact' })
+      .eq('category_id', category.id)
+      .eq('is_published', true)
+      .order('published_at', { ascending: false })
+      .range(offset, offset + perPage - 1)
+
+    if (error) {
+      console.error('[category/slug] Articles query error:', error.message)
+      return {
+        data: { name: rawSlug, description: null, slug: rawSlug },
+        articles: [],
+        total: 0,
+        page,
+        totalPages: 0,
+      }
+    }
+
+    // Attach translations to each article
+    const articlesWithTranslations = await Promise.all(
+      (articles || []).map(async (article: any) => {
+        try {
+          const { data: trans } = await supabase
+            .from('article_translations')
+            .select('*')
+            .eq('article_id', article.id)
+            .limit(1)
+          const t = (trans || [])[0]
+          return {
+            ...article,
+            title: t?.title || '',
+            excerpt: t?.excerpt || null,
+          }
+        } catch {
+          return { ...article, title: '', excerpt: null }
+        }
+      })
+    )
+
+    const rw = (category.translations || []).find((t: any) => t.language_code === 'rw')
+
     return {
-      data: { name: dbSlug, description: null, slug: dbSlug },
+      data: {
+        ...category,
+        name: rw?.name || category.slug,
+        description: rw?.description || null,
+      },
+      articles: articlesWithTranslations,
+      total: count || 0,
+      page,
+      totalPages: Math.ceil((count || 0) / perPage),
+    }
+  } catch (err: any) {
+    console.error('[category/slug] Unexpected error:', err?.message || err)
+    return {
+      data: { name: rawSlug, description: null, slug: rawSlug },
       articles: [],
       total: 0,
       page,
       totalPages: 0,
     }
-  }
-
-  const offset = (page - 1) * perPage
-
-  const { data: articles, error, count } = await supabase
-    .from('articles')
-    .select(`*, author:profiles(display_name, avatar_url)`, { count: 'exact' })
-    .eq('category_id', category.id)
-    .eq('is_published', true)
-    .order('published_at', { ascending: false })
-    .range(offset, offset + perPage - 1)
-
-  if (error) {
-    throw createError({ statusCode: 500, statusMessage: 'Failed to fetch articles for this category' })
-  }
-
-  const rw = (category.translations || []).find((t: any) => t.language_code === 'rw')
-
-  // Attach translations to each article
-  const articlesWithTranslations = await Promise.all(
-    (articles || []).map(async (article: any) => {
-      const { data: trans } = await supabase
-        .from('article_translations')
-        .select('*')
-        .eq('article_id', article.id)
-        .limit(1)
-      const t = (trans || [])[0]
-      return {
-        ...article,
-        title: t?.title || '',
-        excerpt: t?.excerpt || null,
-        author: article.author
-          ? { display_name: article.author.display_name, avatar_url: article.author.avatar_url }
-          : null,
-      }
-    })
-  )
-
-  return {
-    data: {
-      ...category,
-      name: rw?.name || category.slug,
-      description: rw?.description || null,
-    },
-    articles: articlesWithTranslations,
-    total: count || 0,
-    page,
-    totalPages: Math.ceil((count || 0) / perPage),
   }
 })

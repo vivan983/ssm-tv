@@ -1,44 +1,60 @@
-// BUG FIX: Use admin client — profiles RLS blocks anon key from joining author info
+// Featured articles endpoint — resilient pattern.
+// Fetches featured article without joining profiles (avoids RLS issues).
+// Returns { data: null } on any error instead of throwing 500.
 import { useSupabaseAdmin } from '../../utils/supabase-admin'
 
 export default defineEventHandler(async () => {
-  const supabase = useSupabaseAdmin()
-
-  const { data, error } = await supabase
-    .from('articles')
-    .select(`*, category:categories(id, slug), author:profiles(display_name, avatar_url)`)
-    .eq('is_published', true)
-    .eq('is_featured', true)
-    .order('published_at', { ascending: false })
-    .limit(1)
-    .single()
-
-  if (error && error.code !== 'PGRST116') {
-    throw createError({ statusCode: 500, message: error.message })
+  let supabase
+  try {
+    supabase = useSupabaseAdmin()
+  } catch {
+    return { data: null }
   }
 
-  if (!data) return { data: null }
+  try {
+    const { data, error } = await supabase
+      .from('articles')
+      .select('*')
+      .eq('is_published', true)
+      .eq('is_featured', true)
+      .order('published_at', { ascending: false })
+      .limit(1)
+      .single()
 
-  // Fetch translations
-  const { data: translations } = await supabase
-    .from('article_translations')
-    .select('*')
-    .eq('article_id', data.id)
+    // PGRST116 = no rows returned — not an error, just no featured article
+    if (error && error.code !== 'PGRST116') {
+      console.error('[featured] Query error:', error.message)
+      return { data: null }
+    }
 
-  const translation = (translations || [])[0]
+    if (!data) return { data: null }
 
-  return {
-    data: {
-      ...data,
-      title: translation?.title || '',
-      excerpt: translation?.excerpt || null,
-      content: translation?.content || null,
-      category: data.category
-        ? { id: data.category.id, slug: data.category.slug, name: data.category.slug }
-        : null,
-      author: data.author
-        ? { display_name: data.author.display_name, avatar_url: data.author.avatar_url }
-        : null,
-    },
+    // Fetch translations and category separately (no joins — avoids RLS failures)
+    const [{ data: translations }, { data: categories }] = await Promise.all([
+      supabase.from('article_translations').select('*').eq('article_id', data.id),
+      supabase.from('categories').select('id, slug').eq('id', data.category_id).limit(1),
+    ])
+
+    const translation = (translations || [])[0]
+    const category = (categories || [])[0] || null
+
+    return {
+      data: {
+        id: data.id,
+        slug: data.slug,
+        title: translation?.title || '',
+        excerpt: translation?.excerpt || null,
+        content: translation?.content || null,
+        featured_image: data.featured_image || null,
+        is_video: data.is_video || false,
+        youtube_url: data.youtube_url || null,
+        published_at: data.published_at,
+        view_count: data.view_count || 0,
+        category: category ? { id: category.id, slug: category.slug } : null,
+      },
+    }
+  } catch (err: any) {
+    console.error('[featured] Unexpected error:', err?.message || err)
+    return { data: null }
   }
 })
