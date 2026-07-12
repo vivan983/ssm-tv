@@ -30,7 +30,7 @@
             </svg>
           </div>
           <h3 class="contact-info-title">Imeyili Rusange</h3>
-          <a href="mailto:info@ssmtv.rw" class="contact-info-link">info@ssmtv.rw</a>
+          <a href="mailto:Umubyeyidenise555@gmail.com" class="contact-info-link">Umubyeyidenise555@gmail.com</a>
         </div>
 
         <!-- Phone -->
@@ -154,11 +154,11 @@
               Niba ufite inkuru, amakuru ashobora gutanganzwa, cyangwa ushaka ko
               itangazamakuru ryacu rikurikirana ikintu runaka — twandikire kuri:
             </p>
-            <a href="mailto:newsroom@ssmtv.rw" class="contact-sidebar-link">
+            <a href="mailto:Umubyeyidenise555@gmail.com" class="contact-sidebar-link">
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
               </svg>
-              newsroom@ssmtv.rw
+              Umubyeyidenise555@gmail.com
             </a>
           </div>
 
@@ -169,11 +169,11 @@
               Shyira ubucuruzi bwawe imbere y\'abakurikira amakuru ya SSM TV.
               Twandikire tukumenyereze uko wamamaza nifite.
             </p>
-            <a href="mailto:advertising@ssmtv.rw" class="contact-sidebar-link">
+            <a href="mailto:Umubyeyidenise555@gmail.com" class="contact-sidebar-link">
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
               </svg>
-              advertising@ssmtv.rw
+              Umubyeyidenise555@gmail.com
             </a>
           </div>
 
@@ -206,7 +206,7 @@
             Uzagerayo ku basomyi benshi bo mu Rwanda no hanze yarwo.
           </p>
           <div class="contact-advertise-actions">
-            <a href="mailto:advertising@ssmtv.rw" class="contact-advertise-btn">
+            <a href="mailto:Umubyeyidenise555@gmail.com" class="contact-advertise-btn">
               Twandikire ku Bijyanye no Kwamamaza
               <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -264,10 +264,10 @@ const socialLinks = [
 ]
 
 const faqs = [
-  { q: 'Nsohoza nte inkuru cyangwa itangazo?', a: 'Ohereza ubutumwa ukoresheje iyi form, cyangwa wandikire kuri newsroom@ssmtv.rw. Ishyirahamwe ry\'itangazamakuru ryacu rizasuzuma ubusabe bwawe.' },
-  { q: 'Nshobora gute kwamamaza kuri SSM TV?', a: 'Twandikire kuri advertising@ssmtv.rw. Tuzakumenyeshereza amahitamo yose yo kwamamaza — kurubuga, kuri YouTube, cyangwa byombi.' },
-  { q: 'Nzakosora nte ikosa riri mu nkuru?', a: 'Niba ubonye ikosa, twandikire kuri info@ssmtv.rw ukoresheje ingingo "Ikosora". Tuzasuzuma kandi dukosore vuba.' },
-  { q: 'Mwashobora gufasha mu bushakashatsi cyangwa ikiganiro?', a: 'Yego. Abanyamakuru bacu barakora ubushakashatsi no gukora ibiganiro. Twandikire kuri newsroom@ssmtv.rw.' },
+  { q: 'Nsohoza nte inkuru cyangwa itangazo?', a: 'Ohereza ubutumwa ukoresheje iyi form, cyangwa wandikire kuri Umubyeyidenise555@gmail.com. Ishyirahamwe ry\'itangazamakuru ryacu rizasuzuma ubusabe bwawe.' },
+  { q: 'Nshobora gute kwamamaza kuri SSM TV?', a: 'Twandikire kuri Umubyeyidenise555@gmail.com. Tuzakumenyeshereza amahitamo yose yo kwamamaza — kurubuga, kuri YouTube, cyangwa byombi.' },
+  { q: 'Nzakosora nte ikosa riri mu nkuru?', a: 'Niba ubonye ikosa, twandikire kuri Umubyeyidenise555@gmail.com ukoresheje ingingo "Ikosora". Tuzasuzuma kandi dukosore vuba.' },
+  { q: 'Mwashobora gufasha mu bushakashatsi cyangwa ikiganiro?', a: 'Yego. Abanyamakuru bacu barakora ubushakashatsi no gukora ibiganiro. Twandikire kuri Umubyeyidenise555@gmail.com.' },
   { q: 'Ni ndehe wandikira niba nshaka kuba umukorerabushake?', a: 'Ohereza ubutumwa bwawe ukoresheje iyi form, tugaragaze ubushobozi bwawe n\'ubushake. Tuzakumenyesha iyo hagarutse amahirwe.' },
 ]
 

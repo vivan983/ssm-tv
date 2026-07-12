@@ -26,7 +26,7 @@ export const SOCIAL_LINKS = {
 } as const
 
 export const CONTACT_INFO = {
-  email: 'info@ssmtv.rw',
+  email: 'Umubyeyidenise555@gmail.com',
   phone: '+250 788 000 000',
   location: 'Kigali, Rwanda',
 } as const
