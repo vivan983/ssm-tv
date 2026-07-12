@@ -8,6 +8,17 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event)
   const limit = Math.min(parseInt(query.limit as string) || 5, 20)
 
+  const supabaseUrl = process.env.SUPABASE_URL
+  const hasServiceKey = !!process.env.SUPABASE_SERVICE_KEY
+  const hasKey = !!process.env.SUPABASE_KEY
+
+  if (!supabaseUrl) {
+    throw createError({ statusCode: 500, statusMessage: 'SUPABASE_URL env var is missing' })
+  }
+  if (!hasServiceKey && !hasKey) {
+    throw createError({ statusCode: 500, statusMessage: 'SUPABASE_SERVICE_KEY and SUPABASE_KEY env vars are both missing' })
+  }
+
   const supabase = useSupabaseAdmin()
 
   const { data, error } = await supabase
@@ -18,7 +29,11 @@ export default defineEventHandler(async (event) => {
     .limit(limit)
 
   if (error) {
-    throw createError({ statusCode: 500, statusMessage: 'Failed to fetch most-read articles' })
+    console.error('[most-read] Supabase query error:', JSON.stringify(error))
+    throw createError({
+      statusCode: 500,
+      statusMessage: `Failed to fetch most-read articles: ${error.message || error.code || 'unknown'}`,
+    })
   }
 
   const articles = await Promise.all(
