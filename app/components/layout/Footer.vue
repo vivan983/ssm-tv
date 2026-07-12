@@ -243,6 +243,9 @@ const categoryLinks = [
 // ----------------------------------------------------------------------
 const legalLinks = [
   { to: '/about',    labelKey: 'nav.about' },
+  { to: '/terms',    labelKey: 'footer.terms' },
+  { to: '/privacy',  labelKey: 'footer.privacy' },
+  { to: '/cookies',  labelKey: 'footer.cookies' },
   { to: '/contact',  labelKey: 'nav.contact' },
 ]
 </script>
