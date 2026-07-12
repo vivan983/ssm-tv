@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="250" viewBox="0 0 300 250">
+  <rect width="300" height="250" rx="8" fill="#fff"/>
+  <rect width="300" height="130" rx="8" fill="#DC2626"/>
+  <rect y="122" width="300" height="8" fill="#DC2626"/>
+  <circle cx="150" cy="65" r="36" fill="white" opacity="0.2"/>
+  <polygon points="140,50 140,80 168,65" fill="white"/>
+  <text x="150" y="162" font-family="Inter,Noto Sans,sans-serif" font-size="17" font-weight="800" fill="#141414" text-anchor="middle">Kurikira kuri</text>
+  <text x="150" y="186" font-family="Inter,Noto Sans,sans-serif" font-size="24" font-weight="900" fill="#DC2626" text-anchor="middle">YouTube</text>
+  <rect x="75" y="200" width="150" height="32" rx="16" fill="#DC2626"/>
+  <text x="150" y="221" font-family="Inter,Noto Sans,sans-serif" font-size="12" font-weight="700" fill="white" text-anchor="middle">Subikira Umunsi ku Wundi</text>
+</svg>
