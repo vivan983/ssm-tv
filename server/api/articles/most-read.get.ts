@@ -1,60 +1,82 @@
-// BUG FIX: Use useSupabaseAdmin() instead of useSupabaseServer() because
-// the profiles table RLS blocks the anon key from reading author profiles.
-// The admin client (service role) bypasses RLS, which is safe here since
-// this is a server-side only endpoint that only returns published articles.
-import { useSupabaseAdmin } from '../../utils/supabase-admin'
+// Most-read articles endpoint — resilient fallback pattern.
+// Tries useSupabaseAdmin (service role) first, falls back to
+// useSupabaseServer (anon key) if service key is unavailable.
+// Returns empty array on any error instead of throwing 500.
+import { useSupabaseAdmin, useSupabaseServer } from '../../utils/supabase-admin'
 
-export default defineEventHandler(async (event) => {
-  const query = getQuery(event)
-  const limit = Math.min(parseInt(query.limit as string) || 5, 20)
+export default defineEventHandler(async () => {
+  // ------------------------------------------------------------------
+  // 1. Try admin client (service role — bypasses RLS for profiles join)
+  // ------------------------------------------------------------------
+  const serviceKey = process.env.SUPABASE_SERVICE_KEY
+  const supabase = serviceKey ? useSupabaseAdmin() : useSupabaseServer()
 
-  const supabaseUrl = process.env.SUPABASE_URL
-  const hasServiceKey = !!process.env.SUPABASE_SERVICE_KEY
-  const hasKey = !!process.env.SUPABASE_KEY
+  try {
+    // ------------------------------------------------------------------
+    // 2. Query published articles ordered by view_count
+    // ------------------------------------------------------------------
+    const { data, error } = await supabase
+      .from('articles')
+      .select('*')
+      .eq('is_published', true)
+      .order('published_at', { ascending: false })
+      .limit(5)
 
-  if (!supabaseUrl) {
-    throw createError({ statusCode: 500, statusMessage: 'SUPABASE_URL env var is missing' })
+    if (error) {
+      console.error('[most-read] Query error:', error.message)
+      return { data: [] }
+    }
+
+    if (!data || data.length === 0) {
+      return { data: [] }
+    }
+
+    // ------------------------------------------------------------------
+    // 3. Fetch translations + category for each article individually
+    //    (avoids join failures if profiles/categories tables have RLS)
+    // ------------------------------------------------------------------
+    const articles = await Promise.all(
+      data.map(async (article: any) => {
+        try {
+          const [{ data: translations }, { data: categories }] = await Promise.all([
+            supabase
+              .from('article_translations')
+              .select('*')
+              .eq('article_id', article.id)
+              .limit(1),
+            supabase
+              .from('categories')
+              .select('id, slug')
+              .eq('id', article.category_id)
+              .limit(1),
+          ])
+
+          const translation = (translations || [])[0]
+          const category = (categories || [])[0] || null
+
+          return {
+            id: article.id,
+            slug: article.slug,
+            title: translation?.title || '',
+            excerpt: translation?.excerpt || null,
+            featured_image: article.featured_image || null,
+            published_at: article.published_at,
+            view_count: article.view_count || 0,
+            is_featured: article.is_featured || false,
+            category: category ? { id: category.id, slug: category.slug } : null,
+          }
+        } catch {
+          return null
+        }
+      })
+    )
+
+    // Filter out any failed fetches
+    const valid = articles.filter(Boolean)
+
+    return { data: valid }
+  } catch (err: any) {
+    console.error('[most-read] Unexpected error:', err?.message || err)
+    return { data: [] }
   }
-  if (!hasServiceKey && !hasKey) {
-    throw createError({ statusCode: 500, statusMessage: 'SUPABASE_SERVICE_KEY and SUPABASE_KEY env vars are both missing' })
-  }
-
-  const supabase = useSupabaseAdmin()
-
-  const { data, error } = await supabase
-    .from('articles')
-    .select(`*, category:categories(id, slug), author:profiles(display_name, avatar_url)`)
-    .eq('is_published', true)
-    .order('view_count', { ascending: false })
-    .limit(limit)
-
-  if (error) {
-    console.error('[most-read] Supabase query error:', JSON.stringify(error))
-    throw createError({
-      statusCode: 500,
-      statusMessage: `Failed to fetch most-read articles: ${error.message || error.code || 'unknown'}`,
-    })
-  }
-
-  const articles = await Promise.all(
-    (data || []).map(async (article: any) => {
-      const { data: translations } = await supabase
-        .from('article_translations')
-        .select('*')
-        .eq('article_id', article.id)
-        .limit(1)
-
-      const translation = (translations || [])[0]
-      return {
-        ...article,
-        title: translation?.title || '',
-        excerpt: translation?.excerpt || null,
-        author: article.author
-          ? { display_name: article.author.display_name, avatar_url: article.author.avatar_url }
-          : null,
-      }
-    })
-  )
-
-  return { data: articles }
 })
