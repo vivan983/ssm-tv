@@ -197,7 +197,7 @@
 // ======================================================================
 
 const localePath = useLocalePath()
-const { t, te } = useI18n()
+const { t } = useI18n()
 
 // ----------------------------------------------------------------------
 // Dynamic copyright year — auto-updates every January 1st
@@ -205,21 +205,19 @@ const { t, te } = useI18n()
 const currentYear = computed(() => new Date().getFullYear())
 
 // ----------------------------------------------------------------------
-// i18n fallback helpers
-// Keys footer.cookies and footer.copyrightText are not yet in the locale
-// JSON files. These computed values use te() to check for existence and
-// fall back to English. Once the keys are added to
-// i18n/locales/{rw,en,fr}.json they resolve automatically.
+// i18n fallback helpers — SSR-safe: vue-i18n returns the key itself
+// when a translation is missing, so we compare against the key to
+// detect missing translations and fall back to English.
 // ----------------------------------------------------------------------
-const cookiesLabel = computed(() =>
-  te('footer.cookies') ? t('footer.cookies') : 'Cookies'
-)
+const cookiesLabel = computed(() => {
+  const translated = t('footer.cookies')
+  return translated === 'footer.cookies' ? 'Cookies' : translated
+})
 
-const copyrightText = computed(() =>
-  te('footer.copyrightText')
-    ? t('footer.copyrightText')
-    : 'All rights reserved.'
-)
+const copyrightText = computed(() => {
+  const translated = t('footer.copyrightText')
+  return translated === 'footer.copyrightText' ? 'All rights reserved.' : translated
+})
 
 // ----------------------------------------------------------------------
 // TIER 1 — SSM TV core category navigation
