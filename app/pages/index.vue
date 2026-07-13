@@ -1,11 +1,5 @@
 <template>
   <div class="bbc-home">
-    <!-- DEBUG: Remove this line once articles render -->
-    <div v-if="!articlesLoaded" class="text-center py-16 px-4" style="background:#f0fdf4;border:2px dashed #16a34a;margin:16px;border-radius:8px;">
-      <p class="text-green-800 font-bold text-lg">SSM TV — Amakuru Araza (News Loading...)</p>
-      <p class="text-green-600 text-sm mt-2">Ibaze niba ukibona iyi message, amakuru ntabwo yashoboye kwerekana.</p>
-    </div>
-
     <HeroFeatured />
 
     <!-- AD: Homepage Banner -->
@@ -113,7 +107,6 @@ import { useArticlesStore } from '~/stores/articles'
 const { t } = useI18n()
 const store = useArticlesStore()
 
-const articlesLoaded = ref(false)
 const secondaryLoading = ref(true)
 const secondaryArticles = ref<Article[]>([])
 
@@ -172,7 +165,6 @@ onMounted(async () => {
     sportArticles.value = response.data || []
   } catch {} finally {
     sportLoading.value = false
-    articlesLoaded.value = true
   }
 })
 
