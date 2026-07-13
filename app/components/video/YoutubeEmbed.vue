@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full overflow-hidden rounded-lg bg-black">
+  <div class="relative w-full max-w-5xl mx-auto overflow-hidden rounded-lg bg-black">
     <!-- Thumbnail / poster state -->
     <div
       v-if="!playing"

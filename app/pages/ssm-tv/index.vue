@@ -3,10 +3,10 @@
     <!-- Loading -->
     <div v-if="loading" class="ssm-loading">
       <div class="flex gap-6 mb-8">
-        <div class="flex-[0_0_75%]">
+        <div class="w-full lg:flex-[0_0_75%]">
           <div class="aspect-video bg-neutral-200 animate-pulse rounded-lg" />
         </div>
-        <div class="flex-[0_0_25%] space-y-3">
+        <div class="w-full lg:flex-[0_0_25%] space-y-3">
           <div v-for="i in 4" :key="i" class="flex gap-3">
             <div class="w-36 aspect-video bg-neutral-200 animate-pulse rounded-lg flex-shrink-0" />
             <div class="flex-1 space-y-2 py-1">
@@ -51,7 +51,7 @@
           <!-- LEFT: Large featured (75%) -->
           <NuxtLink
             :to="localePath(`/ssm-tv/video/${heroVideo.videoId}`)"
-            class="flex-[0_0_75%] block group relative aspect-video bg-neutral-900 rounded-lg overflow-hidden shadow-lg group"
+            class="w-full lg:flex-[0_0_75%] block group relative aspect-video bg-neutral-900 rounded-lg overflow-hidden shadow-lg group"
           >
             <img
               :src="heroVideo.thumbnailUrl"
@@ -82,7 +82,7 @@
           </NuxtLink>
 
           <!-- RIGHT: 4 stacked videos (25%) -->
-          <div class="flex-[0_0_25%] flex flex-col gap-3">
+          <div class="w-full lg:flex-[0_0_25%] flex flex-col gap-3">
             <NuxtLink
               v-for="video in heroSideVideos"
               :key="video.videoId"
@@ -139,7 +139,7 @@
         <!-- ============================================================ -->
         <!-- LEFT: Video Grid (75%)                                       -->
         <!-- ============================================================ -->
-        <div class="flex-[0_0_75%] min-w-0">
+        <div class="w-full lg:flex-[0_0_75%] min-w-0">
           <div v-if="gridVideos.length > 0">
             <div class="flex items-center gap-4 mb-5">
               <h2 class="text-xl font-extrabold text-neutral-900 tracking-tight">
@@ -212,7 +212,7 @@
         <!-- ============================================================ -->
         <!-- RIGHT: Sidebar (25%)                                         -->
         <!-- ============================================================ -->
-        <aside class="flex-[0_0_25%] space-y-[30px]">
+        <aside class="w-full lg:flex-[0_0_25%] space-y-[30px]">
           <!-- MOST POPULAR -->
           <div class="bg-white rounded-lg p-[15px] shadow-sm border border-neutral-100">
             <h3 class="text-lg font-extrabold text-neutral-900 mb-4 pb-3 border-b-2 border-green-600 uppercase tracking-wide">

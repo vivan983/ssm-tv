@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="max-w-5xl mx-auto px-4 md:px-6 py-6">
     <!-- ============================================================ -->
     <!-- Loading                                                     -->
     <!-- ============================================================ -->
-    <div v-if="loading" class="space-y-5">
+    <div v-if="loading" class="space-y-5 max-w-4xl mx-auto">
       <div class="h-8 bg-neutral-200 animate-pulse rounded w-3/4" />
       <div class="h-6 bg-neutral-200 animate-pulse rounded w-1/2" />
       <div class="aspect-video bg-neutral-200 animate-pulse rounded-xl" />
