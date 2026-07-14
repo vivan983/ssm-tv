@@ -1,11 +1,6 @@
 <template>
   <section class="mb-8">
     <ArticleHero :article="featured" :loading="loading" />
-
-    <!-- Empty state (no featured article available) -->
-    <div v-if="!loading && !featured" class="card p-6 text-center text-neutral-500">
-      <p>{{ $t('home.noFeatured') }}</p>
-    </div>
   </section>
 </template>
 
