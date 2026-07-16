@@ -35,27 +35,16 @@
       <hr class="border-0 border-t border-neutral-200" />
 
       <!-- ================================================================ -->
-      <!-- TIER 1 — Main Category Navigation Row                            -->
-      <!-- Desktop: single horizontal inline row, evenly-spaced links        -->
-      <!-- Mobile (< 768px): vertical stacked list                           -->
+      <!-- TIER 1 — About SSM TV Info Row                                    -->
       <!-- ================================================================ -->
-      <nav
-        aria-label="Footer main news categories"
-        class="py-3"
-      >
-        <ul
-          class="flex flex-col md:flex-row md:flex-wrap md:items-center gap-y-2.5 gap-x-6"
-        >
-          <li v-for="item in categoryLinks" :key="item.to">
-            <NuxtLink
-              :to="localePath(item.to)"
-              class="text-sm font-medium text-neutral-800 hover:text-green-700 hover:underline decoration-green-700 underline-offset-[0.35em] transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-600 rounded-sm"
-            >
-              {{ $t(item.labelKey) }}
-            </NuxtLink>
-          </li>
-        </ul>
-      </nav>
+      <div class="py-3 max-w-2xl">
+        <p class="text-sm text-neutral-600 leading-relaxed">
+          {{ $t('footer.about') }}
+        </p>
+        <p class="text-sm text-neutral-500 leading-relaxed mt-1.5">
+          <span>{{ editorialText }}</span>
+        </p>
+      </div>
 
       <!-- divider -->
       <hr class="border-0 border-t border-neutral-200" />
@@ -200,7 +189,8 @@
 // SSM TV branded · No language selector · Contact numbers hidden
 //
 // i18n keys used (all exist in locale files except as noted):
-//   nav.politiki – nav.ssmTv    ✓   Tier 1 category links
+//   footer.about                 ✓   Tier 1 site info
+//   footer.editorial             ⚠   Tier 1 editorial info (has fallback)
 //   footer.followUs              ✓   Tier 2 "Follow Us" label
 //   nav.about                    ✓   Tier 3 legal link
 //   footer.terms                 ✓   Tier 3 legal link
@@ -228,25 +218,20 @@ const cookiesLabel = computed(() => {
   return translated === 'footer.cookies' ? 'Cookies' : translated
 })
 
+const editorialText = computed(() => {
+  const translated = t('footer.editorial')
+  return translated === 'footer.editorial' ? 'Inkuru zacu zisesengurwa n\'itsinda ry\'abanyamakuru babigize umwuga. Ibitekerezo byatanzwe mu nkuru ni iby\'abanditsi bazanditse.' : translated
+})
+
 const copyrightText = computed(() => {
   const translated = t('footer.copyrightText')
   return translated === 'footer.copyrightText' ? 'All rights reserved.' : translated
 })
 
 // ----------------------------------------------------------------------
-// TIER 1 — SSM TV core category navigation
-// Slugs match the project's /category/[slug].vue dynamic route
-// All labelKey values exist in i18n/locales under the "nav" namespace
+// TIER 1 — SSM TV site info text
+// footer.about and footer.editorial (header comment above lists all keys)
 // ----------------------------------------------------------------------
-const categoryLinks = [
-  { to: '/category/politiki',        labelKey: 'nav.politiki' },
-  { to: '/category/ubuzima',         labelKey: 'nav.ubuzima' },
-  { to: '/category/ubucuruzi',       labelKey: 'nav.ubucuruzi' },
-  { to: '/category/ikoranabuhanga',  labelKey: 'nav.ikoranabuhanga' },
-  { to: '/category/imyidagaduro',    labelKey: 'nav.imyidagaduro' },
-  { to: '/category/imikino',         labelKey: 'nav.imikino' },
-  { to: '/ssm-tv',                   labelKey: 'nav.ssmTv' },
-]
 
 // ----------------------------------------------------------------------
 // TIER 3 — Legal & compliance links
