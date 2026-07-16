@@ -104,7 +104,8 @@
     "contactInfo": "Contact",
     "copyright": "© SSM TV. Tous droits réservés.",
     "privacy": "Politique de Confidentialité",
-    "terms": "Conditions d'Utilisation"
+    "terms": "Conditions d'Utilisation",
+    "cookies": "Cookies"
   },
   "search": {
     "title": "Rechercher",
@@ -271,6 +272,18 @@
     "search": {
       "title": "Rechercher - SSM TV",
       "description": "Recherchez parmi tous les articles de SSM TV."
+    },
+    "terms": {
+      "title": "Conditions d'Utilisation - SSM TV",
+      "description": "Conditions d'utilisation du site SSM TV. Lisez pour comprendre vos droits et responsabilités en tant qu'utilisateur de ce site."
+    },
+    "privacy": {
+      "title": "Politique de Confidentialité - SSM TV",
+      "description": "Politique de confidentialité de SSM TV. Découvrez comment nous collectons, utilisons et protégeons vos données personnelles."
+    },
+    "cookies": {
+      "title": "Politique de Cookies - SSM TV",
+      "description": "Politique de cookies de SSM TV. Découvrez quels cookies nous utilisons, pourquoi nous les utilisons et comment les gérer."
     }
   }
 }

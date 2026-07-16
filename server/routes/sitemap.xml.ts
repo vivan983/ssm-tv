@@ -26,7 +26,7 @@ export default defineEventHandler(async (event) => {
     { code: '/fr', default: false },
   ]
 
-  const staticPages = ['', '/ssm-tv', '/about', '/contact']
+  const staticPages = ['', '/ssm-tv', '/about', '/contact', '/terms', '/privacy', '/cookies']
 
   for (const locale of locales) {
     for (const page of staticPages) {

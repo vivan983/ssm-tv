@@ -43,7 +43,7 @@ export default defineNuxtConfig({
     redirectOptions: {
       login: '/admin/login',
       callback: '/admin',
-      exclude: ['/', '/en/**', '/fr/**', '/about/**', '/contact/**', '/ssm-tv/**', '/article/**', '/category/**', '/search/**'],
+      exclude: ['/', '/en/**', '/fr/**', '/about/**', '/contact/**', '/terms/**', '/privacy/**', '/cookies/**', '/ssm-tv/**', '/article/**', '/category/**', '/search/**'],
     },
   },
 

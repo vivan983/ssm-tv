@@ -104,7 +104,8 @@
     "contactInfo": "Twandikire",
     "copyright": "© SSM TV. Uburenganzira bwose ni ubwacu.",
     "privacy": "Amabwiriza y'Umuhezo",
-    "terms": "Amategeko"
+    "terms": "Amategeko",
+    "cookies": "Cookies"
   },
   "search": {
     "title": "Shakisha",
@@ -271,6 +272,18 @@
     "search": {
       "title": "Shakisha - SSM TV",
       "description": "Shakisha mu nkuru zose za SSM TV."
+    },
+    "terms": {
+      "title": "Amategeko y'Imikoreshereze - SSM TV",
+      "description": "Amategeko agenga imikoreshereze y'urubuga rwa SSM TV. Soma kugira ngo umenye uburenganzira n'inshingano byawe nk'ukoresha uru rubuga."
+    },
+    "privacy": {
+      "title": "Amabwiriza y'Umuhezo - SSM TV",
+      "description": "Amabwiriza y'umuhezo ya SSM TV. Menya uburyo dukusanya, dukoresha, kandi turinda amakuru yawe bwite."
+    },
+    "cookies": {
+      "title": "Amabwiriza y'Ivimba (Cookies) - SSM TV",
+      "description": "Amabwiriza y'ivimba (cookies) bya SSM TV. Menya ivimba dukoresha, impamvu tubikoresha, n'uko wabihagarika."
     }
   }
 }
