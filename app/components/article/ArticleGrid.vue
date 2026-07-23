@@ -109,7 +109,7 @@ withDefaults(
 }
 
 .bbc-card-skeleton-body {
-  padding: 16px 0 0 0;
+  padding: 16px 14px 14px 14px;
 }
 
 .bbc-card-skeleton-category {

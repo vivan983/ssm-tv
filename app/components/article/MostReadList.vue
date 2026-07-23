@@ -243,7 +243,7 @@ function formatDate(date: string) {
   font-size: 0.8125rem;
   font-weight: 600;
   line-height: 1.35;
-  color: #1f2937;
+  color: var(--text-heading);
   margin: 0 0 4px 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;

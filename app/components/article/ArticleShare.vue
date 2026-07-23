@@ -196,7 +196,7 @@ async function copyLink() {
 
 .bbc-share-btn:hover {
   background: #e5e7eb;
-  color: #111827;
+  color: var(--text-heading);
   border-color: #9ca3af;
 }
 

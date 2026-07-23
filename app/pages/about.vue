@@ -1,5 +1,6 @@
 <template>
   <div class="about-page">
+    <div class="about-card">
     <!-- Page heading — unified editorial pattern -->
     <div class="about-heading">
       <h1 class="about-title">{{ $t('about.title') }}</h1>
@@ -47,6 +48,7 @@
         <p class="about-stat-label">{{ $t('about.statNews') }}</p>
       </div>
     </div>
+    </div>
   </div>
 </template>
 
@@ -72,7 +74,7 @@ definePageMeta({
 .about-page {
   max-width: 768px;
   margin: 0 auto;
-  padding: 40px 16px 64px 16px;
+  padding: 32px 16px 48px 16px;
 }
 
 @media (min-width: 768px) {
@@ -81,6 +83,31 @@ definePageMeta({
     padding-right: 24px;
   }
 }
+
+/* ---- White card wrapper ---- */
+.about-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 40px 32px 44px 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+@media (min-width: 640px) {
+  .about-card {
+    padding: 52px 44px 56px 44px;
+  }
+}
+
+:root.dark .about-card { background: #1a1a1a; border-color: #27272a; }
+:root.dark .about-title { color: #e5e7eb; }
+:root.dark .about-intro { color: #d1d5db; }
+:root.dark .about-section-title { color: #e5e7eb; }
+:root.dark .about-section-text { color: #d1d5db; }
+:root.dark .about-heading { border-bottom-color: #374151; }
+:root.dark .about-stats { border-top-color: #374151; }
+:root.dark .about-stat { background: #111111; }
+:root.dark .about-stat-label { color: #d1d5db; }
 
 /* ---- Heading — unified editorial pattern ---- */
 .about-heading {

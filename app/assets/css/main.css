@@ -18,6 +18,26 @@
     --color-neutral-900: #111827;
     --header-height: 128px;
     --header-height-mobile: 84px;
+    /* Text colors that switch in dark mode */
+    --text-heading: #141414;
+    --text-body: #383838;
+    --text-muted: #545658;
+    --text-subtle: #9ca3af;
+    --bg-card: #ffffff;
+    --bg-page: #f3f4f6;
+    --border-color: #e5e7eb;
+    --bg-card-alt: #f9fafb;
+  }
+
+  :root.dark {
+    --text-heading: #ffffff;
+    --text-body: #ffffff;
+    --text-muted: #e5e7eb;
+    --text-subtle: #d1d5db;
+    --bg-card: #1a1a1a;
+    --bg-page: #0a0a0a;
+    --border-color: #27272a;
+    --bg-card-alt: #111111;
   }
 
   html {
@@ -134,6 +154,290 @@
   }
 }
 
+/* =====================================================================
+   DARK MODE — global overrides (Tailwind darkMode: 'class')
+   These MUST be in global CSS — Vue scoped styles break :root.dark selectors.
+   ===================================================================== */
+:root.dark body {
+  background-color: #0a0a0a !important;
+  color: #d1d5db !important;
+}
+
+/* ==== Article Cards (homepage story cards) ==== */
+:root.dark .bbc-card {
+  background: #1a1a1a !important;
+}
+:root.dark .bbc-card-title {
+  color: #e5e7eb !important;
+}
+:root.dark .bbc-card:hover .bbc-card-title {
+  color: #4ade80 !important;
+}
+:root.dark .bbc-card-excerpt,
+:root.dark .bbc-card-meta,
+:root.dark .bbc-card-time,
+:root.dark .bbc-card-views {
+  color: #9ca3af !important;
+}
+:root.dark .bbc-card-section {
+  color: #4ade80 !important;
+}
+:root.dark .bbc-card-img-wrap {
+  background: #27272a !important;
+}
+
+/* ==== ArticleGrid cards ==== */
+:root.dark .article-grid-card-body {
+  background: #1a1a1a !important;
+}
+
+/* ==== Section headings ==== */
+:root.dark .bbc-section-heading {
+  border-bottom-color: #27272a !important;
+}
+:root.dark .bbc-section-title {
+  color: #e5e7eb !important;
+}
+:root.dark .bbc-section-more {
+  color: #4ade80 !important;
+}
+
+/* ==== Skeleton cards ==== */
+:root.dark .bbc-card-skeleton {
+  background: #1f2937 !important;
+}
+
+/* ==== Hero image cards ==== */
+:root.dark .hero-card-wrapper {
+  background: #1a1a1a !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.03) !important;
+}
+:root.dark .hero-media {
+  background: #27272a !important;
+}
+
+/* ==== Article content / prose ==== */
+:root.dark .bbc-prose {
+  color: #d1d5db !important;
+}
+:root.dark .bbc-prose h1,
+:root.dark .bbc-prose h2,
+:root.dark .bbc-prose h3,
+:root.dark .bbc-prose h4,
+:root.dark .bbc-prose h5,
+:root.dark .bbc-prose h6 {
+  color: #e5e7eb !important;
+}
+:root.dark .bbc-prose blockquote {
+  background: #111111 !important;
+  border-left-color: #4ade80 !important;
+  color: #9ca3af !important;
+}
+:root.dark .bbc-prose a {
+  color: #4ade80 !important;
+}
+:root.dark .bbc-prose a:hover {
+  color: #86efac !important;
+}
+:root.dark .bbc-prose .article-intro {
+  color: #d1d5db !important;
+}
+:root.dark .bbc-prose figcaption {
+  color: #9ca3af !important;
+}
+
+/* ==== Policy / About page cards ==== */
+:root.dark .policy-card,
+:root.dark .about-card {
+  background: #1a1a1a !important;
+  border-color: #27272a !important;
+}
+:root.dark .policy-title,
+:root.dark .about-title {
+  color: #e5e7eb !important;
+}
+:root.dark .policy-section-title,
+:root.dark .policy-subsection-title,
+:root.dark .about-section-title {
+  color: #e5e7eb !important;
+}
+:root.dark .policy-intro,
+:root.dark .about-intro {
+  color: #d1d5db !important;
+}
+:root.dark .policy-section-text,
+:root.dark .about-section-text {
+  color: #d1d5db !important;
+}
+:root.dark .policy-list li {
+  color: #d1d5db !important;
+}
+:root.dark .policy-contact,
+:root.dark .policy-contact-item,
+:root.dark .policy-contact-item strong {
+  color: #d1d5db !important;
+}
+:root.dark .policy-contact {
+  background: #111111 !important;
+  border-color: #27272a !important;
+}
+:root.dark .policy-updated {
+  color: #6b7280 !important;
+}
+:root.dark .policy-heading,
+:root.dark .about-heading {
+  border-bottom-color: #27272a !important;
+}
+:root.dark .policy-link {
+  color: #4ade80 !important;
+}
+:root.dark .policy-link:hover {
+  color: #86efac !important;
+}
+:root.dark .policy-code {
+  background: #27272a !important;
+  color: #f87171 !important;
+}
+:root.dark .policy-table thead {
+  background: #111111 !important;
+}
+:root.dark .policy-table th {
+  color: #e5e7eb !important;
+  border-bottom-color: #27272a !important;
+}
+:root.dark .policy-table td {
+  color: #d1d5db !important;
+  border-bottom-color: #1a1a1a !important;
+}
+:root.dark .policy-table-wrap {
+  border-color: #27272a !important;
+}
+:root.dark .policy-browser-card {
+  background: #111111 !important;
+  border-color: #27272a !important;
+}
+:root.dark .policy-browser-name {
+  color: #e5e7eb !important;
+}
+:root.dark .policy-browser-steps {
+  color: #9ca3af !important;
+}
+:root.dark .about-stats {
+  border-top-color: #27272a !important;
+}
+:root.dark .about-stat {
+  background: #111111 !important;
+}
+:root.dark .about-stat-label {
+  color: #9ca3af !important;
+}
+
+/* ==== Contact page ==== */
+:root.dark .contact-hero-title,
+:root.dark .contact-section-title,
+:root.dark .contact-info-title,
+:root.dark .contact-success-title,
+:root.dark .contact-sidebar-title,
+:root.dark .contact-advertise-title,
+:root.dark .contact-faq-q { color: #e5e7eb !important; }
+:root.dark .contact-hero-sub,
+:root.dark .contact-info-text,
+:root.dark .contact-success-text,
+:root.dark .contact-sidebar-text,
+:root.dark .contact-advertise-text,
+:root.dark .contact-faq-a p,
+:root.dark .contact-info-sub { color: #d1d5db !important; }
+:root.dark .contact-info-card,
+:root.dark .contact-form-wrap,
+:root.dark .contact-sidebar-card,
+:root.dark .contact-faq-q,
+:root.dark .contact-faq-item { background: #1a1a1a !important; border-color: #27272a !important; }
+:root.dark .contact-faq-q:hover { background: #27272a !important; }
+:root.dark .contact-advertise { background: #111111 !important; border-color: #27272a !important; }
+:root.dark .contact-sidebar-card--accent { background: #0d2818 !important; border-color: #166534 !important; }
+:root.dark .contact-info-icon--green { background: #0d2818 !important; }
+:root.dark .contact-info-icon--blue { background: #0d1b3d !important; }
+:root.dark .contact-info-icon--red { background: #2d0d0d !important; }
+:root.dark .contact-info-icon--amber { background: #1a1400 !important; }
+
+/* ==== Search page ==== */
+:root.dark .search-page,
+:root.dark .search-input,
+:root.dark .search-card { background: #1a1a1a !important; color: #d1d5db !important; border-color: #27272a !important; }
+:root.dark .search-title,
+:root.dark .search-card-title { color: #e5e7eb !important; }
+:root.dark .search-card-excerpt,
+:root.dark .search-card-meta { color: #9ca3af !important; }
+
+/* ==== Category page ==== */
+:root.dark .category-title { color: #e5e7eb !important; }
+:root.dark .category-description { color: #d1d5db !important; }
+
+/* ==== Ads ==== */
+:root.dark .advertise-card { background: #1a1a1a !important; color: #d1d5db !important; }
+
+/* ==== Tailwind utility overrides ==== */
+:root.dark .bg-white {
+  background-color: #1a1a1a !important;
+}
+:root.dark .text-neutral-900,
+:root.dark .text-neutral-800 {
+  color: #e5e7eb !important;
+}
+:root.dark .text-neutral-700 {
+  color: #d1d5db !important;
+}
+:root.dark .text-neutral-600 {
+  color: #d1d5db !important;
+}
+:root.dark .text-neutral-500 {
+  color: #9ca3af !important;
+}
+:root.dark .border-neutral-200,
+:root.dark .border-neutral-100 {
+  border-color: #27272a !important;
+}
+:root.dark .bg-neutral-50,
+:root.dark .bg-neutral-100 {
+  background-color: #1a1a1a !important;
+}
+:root.dark .hover\:bg-neutral-100:hover {
+  background-color: #27272a !important;
+}
+:root.dark .hover\:text-neutral-700:hover {
+  color: #d1d5db !important;
+}
+
+/* ==== Broad catch-all: force all text to be light in dark mode ==== */
+:root.dark body { color: #d1d5db !important; }
+:root.dark main,
+:root.dark main * { color: inherit; }
+:root.dark main h1,
+:root.dark main h2,
+:root.dark main h3,
+:root.dark main h4,
+:root.dark main h5,
+:root.dark main h6 { color: #e5e7eb !important; }
+:root.dark main a { color: #4ade80 !important; }
+:root.dark main a:hover { color: #86efac !important; }
+:root.dark main p,
+:root.dark main li,
+:root.dark main span:not([class*="text-"]),
+:root.dark main time,
+:root.dark main small,
+:root.dark main label,
+:root.dark main td,
+:root.dark main blockquote,
+:root.dark main figcaption { color: #d1d5db !important; }
+:root.dark main .text-white,
+:root.dark main .text-white\/90 { color: #ffffff !important; }
+
+:root.dark input,
+:root.dark textarea,
+:root.dark select { color: #d1d5db !important; background: #1a1a1a !important; border-color: #27272a !important; }
+:root.dark input::placeholder,
+:root.dark textarea::placeholder { color: #6b7280 !important; }
+
 @layer utilities {
   /* Gradient overlay for hero images */
   .hero-gradient {
@@ -146,11 +450,11 @@
   }
 
   .hero-gradient-bottom {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 60%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 60%) !important;
   }
 
   /* Text balance for headings */
   .text-balance {
-    text-wrap: balance;
+    text-wrap: balance !important;
   }
 }

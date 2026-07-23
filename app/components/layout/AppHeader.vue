@@ -1,16 +1,16 @@
 ﻿<template>
   <header
-    class="sticky top-0 z-header bg-white border-b border-neutral-200 transition-shadow duration-200"
+    class="sticky top-0 z-header bg-white dark:bg-[#0d0d0d] border-b border-neutral-200 dark:border-neutral-800 transition-shadow duration-200"
     :class="{ 'shadow-header': isScrolled }"
   >
     <div class="container-main">
-      <div class="flex items-center justify-between py-2.5 lg:py-4">
+      <div class="flex items-center justify-between h-16 lg:h-20">
         <!-- Logo -->
-        <NuxtLink :to="localePath('/')" class="flex items-center gap-2 flex-shrink-0 mt-10 ml-4 sm:ml-8 lg:ml-12" aria-label="SSM TV">
+        <NuxtLink :to="localePath('/')" class="flex items-center gap-2 flex-shrink-0 -my-4" aria-label="SSM TV">
           <img
-            src="/logo-ssm.png"
+            src="/logo.png"
             alt="SSM TV"
-            class="h-10 lg:h-[52px] w-auto"
+            class="h-28 lg:h-32 w-auto"
           />
         </NuxtLink>
 
@@ -22,14 +22,14 @@
               :href="item.href"
               target="_blank"
               rel="noopener noreferrer"
-              class="px-3 py-2 text-[0.8125rem] font-bold uppercase tracking-wide text-neutral-700 hover:text-green-700 hover:bg-green-50 rounded-md transition-colors"
+              class="px-3 py-2 text-[0.8125rem] font-bold uppercase tracking-wide text-neutral-700 dark:text-neutral-300 hover:text-green-700 dark:hover:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/30 rounded-md transition-colors"
             >
               {{ $t(item.labelKey) }}
             </a>
             <NuxtLink
               v-else
               :to="localePath(item.to)"
-              class="px-3 py-2 text-[0.8125rem] font-bold uppercase tracking-wide text-neutral-700 hover:text-green-700 hover:bg-green-50 rounded-md transition-colors"
+              class="px-3 py-2 text-[0.8125rem] font-bold uppercase tracking-wide text-neutral-700 dark:text-neutral-300 hover:text-green-700 dark:hover:text-green-400 hover:bg-green-50 dark:hover:bg-green-900/30 rounded-md transition-colors"
               active-class="text-green-700 bg-green-50 font-bold"
               exact-active-class="text-green-700 bg-green-50 font-bold"
             >
@@ -39,10 +39,33 @@
         </nav>
 
         <!-- Right actions -->
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-1">
+          <!-- Dark mode toggle -->
+          <button
+            class="p-2 text-neutral-500 hover:text-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200 rounded-lg transition-colors"
+            @click="darkMode.toggle()"
+            :aria-label="darkMode.isDark.value ? 'Light mode' : 'Dark mode'"
+            :title="darkMode.isDark.value ? 'Light mode' : 'Dark mode'"
+          >
+            <!-- Sun icon (shown in dark mode → switch to light) -->
+            <svg
+              v-if="darkMode.isDark.value"
+              xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <!-- Moon icon (shown in light mode → switch to dark) -->
+            <svg
+              v-else
+              xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </button>
+
           <!-- Search trigger -->
           <button
-            class="p-2 text-neutral-500 hover:text-neutral-700 hover:bg-neutral-100 rounded-lg transition-colors"
+            class="p-2 text-neutral-500 hover:text-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200 rounded-lg transition-colors"
             @click="showSearch = true"
             :aria-label="$t('nav.search')"
           >
@@ -69,7 +92,7 @@
     </div>
 
     <!-- Mobile Navigation -->
-    <MobileNav v-if="mobileNavOpen" :items="navItems" @close="mobileNavOpen = false" />
+    <MobileNav :open="mobileNavOpen" @close="mobileNavOpen = false" />
 
     <!-- ====================================================================
          SEARCH OVERLAY — professional newsroom search
@@ -252,6 +275,7 @@ import LoadingSpinner from '~/components/ui/LoadingSpinner.vue'
 const localePath = useLocalePath()
 const router = useRouter()
 const { locale } = useI18n()
+const darkMode = useDarkMode()
 
 const isScrolled = ref(false)
 const mobileNavOpen = ref(false)
@@ -271,6 +295,15 @@ let debounceTimer: ReturnType<typeof setTimeout> | null = null
 // NAVIGATION ITEMS — i18n key resolved via $t() in template
 // Using labelKey pattern to work with lazy-loaded locale messages
 // ====================================================================
+const categoryLinks = [
+  { to: '/category/politiki', labelKey: 'nav.politiki' },
+  { to: '/category/ubuzima', labelKey: 'nav.ubuzima' },
+  { to: '/category/ubucuruzi', labelKey: 'nav.ubucuruzi' },
+  { to: '/category/ikoranabuhanga', labelKey: 'nav.ikoranabuhanga' },
+  { to: '/category/imyidagaduro', labelKey: 'nav.imyidagaduro' },
+  { to: '/category/imikino', labelKey: 'nav.imikino' },
+]
+
 const navItems = [
   { to: '/', labelKey: 'nav.home' },
   { to: '/category/politiki', labelKey: 'nav.politiki' },

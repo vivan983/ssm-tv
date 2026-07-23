@@ -61,7 +61,7 @@
             <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
             <!-- SSM badge -->
             <div class="absolute top-3 left-3 z-10">
-              <img src="/logo-ssm.png" alt="SSM" class="h-8 w-auto drop-shadow-lg" />
+              <img src="/logo.png" alt="SSM" class="h-8 w-auto drop-shadow-lg" />
             </div>
             <!-- Play -->
             <div class="absolute inset-0 flex items-center justify-center">
@@ -97,7 +97,7 @@
                   </div>
                 </div>
                 <div class="absolute top-2 left-2">
-                  <img src="/logo-ssm.png" alt="SSM" class="h-4 w-auto drop-shadow-md" />
+                  <img src="/logo.png" alt="SSM" class="h-4 w-auto drop-shadow-md" />
                 </div>
               </div>
               <div class="flex-1 min-w-0 flex flex-col justify-center pr-3">
@@ -160,7 +160,7 @@
                   <img :src="video.thumbnailUrl" :alt="video.title" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]" loading="lazy" />
                   <!-- SSM badge -->
                   <div class="absolute top-2.5 left-2.5 z-10">
-                    <img src="/logo-ssm.png" alt="SSM" class="h-4 w-auto drop-shadow-md" />
+                    <img src="/logo.png" alt="SSM" class="h-4 w-auto drop-shadow-md" />
                   </div>
                   <!-- Stats -->
                   <div class="absolute top-2.5 right-2.5 flex items-center gap-2 z-10">
@@ -232,7 +232,7 @@
                   <div class="relative aspect-video rounded-lg overflow-hidden bg-neutral-200 shadow-sm">
                     <img :src="v.thumbnailUrl" :alt="v.title" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
                     <div class="absolute top-1 left-1">
-                      <img src="/logo-ssm.png" alt="SSM" class="h-3 w-auto drop-shadow-sm" />
+                      <img src="/logo.png" alt="SSM" class="h-3 w-auto drop-shadow-sm" />
                     </div>
                   </div>
                 </div>
@@ -262,7 +262,7 @@
                   <div class="relative aspect-video rounded-lg overflow-hidden bg-neutral-200">
                     <img :src="v.thumbnailUrl" :alt="v.title" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
                     <div class="absolute top-1 left-1">
-                      <img src="/logo-ssm.png" alt="SSM" class="h-3 w-auto drop-shadow-sm" />
+                      <img src="/logo.png" alt="SSM" class="h-3 w-auto drop-shadow-sm" />
                     </div>
                   </div>
                 </div>
@@ -292,7 +292,7 @@
                   <div class="relative aspect-video rounded-lg overflow-hidden bg-neutral-200">
                     <img :src="v.thumbnailUrl" :alt="v.title" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" />
                     <div class="absolute top-1 left-1">
-                      <img src="/logo-ssm.png" alt="SSM" class="h-3 w-auto drop-shadow-sm" />
+                      <img src="/logo.png" alt="SSM" class="h-3 w-auto drop-shadow-sm" />
                     </div>
                   </div>
                 </div>

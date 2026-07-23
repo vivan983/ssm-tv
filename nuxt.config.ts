@@ -10,8 +10,6 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/supabase',
     '@pinia/nuxt',
-    // '@nuxtjs/sitemap' — using custom server/routes/sitemap.xml.ts instead
-    // VueUse composables auto-import without the module
   ],
 
   i18n: {

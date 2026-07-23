@@ -214,7 +214,7 @@ definePageMeta({
 }
 
 .cat-breadcrumb-current {
-  color: #141414;
+  color: var(--text-heading);
   font-weight: 600;
 }
 
@@ -231,7 +231,7 @@ definePageMeta({
   font-size: 1.5rem;
   font-weight: 800;
   line-height: 1.2;
-  color: #141414;
+  color: var(--text-heading);
   margin: 0;
   letter-spacing: -0.012em;
 }
@@ -246,7 +246,7 @@ definePageMeta({
 .cat-description {
   font-size: 0.9375rem;
   line-height: 1.6;
-  color: #545658;
+  color: var(--text-muted);
   margin: -8px 0 28px 0;
   max-width: 650px;
 }

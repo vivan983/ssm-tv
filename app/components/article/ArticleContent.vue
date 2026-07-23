@@ -30,7 +30,7 @@ const sanitizedContent = computed(() => {
   font-family: 'Inter', 'Noto Sans', system-ui, -apple-system, sans-serif;
   font-size: 1.125rem;
   line-height: 1.75;
-  color: #383838;
+  color: var(--text-body);
   letter-spacing: 0.002em;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -63,7 +63,7 @@ const sanitizedContent = computed(() => {
   font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.3;
-  color: #141414;
+  color: var(--text-heading);
   margin: 2.25em 0 0.5em 0;
   letter-spacing: -0.012em;
 }
@@ -73,7 +73,7 @@ const sanitizedContent = computed(() => {
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.4;
-  color: #141414;
+  color: var(--text-heading);
   margin: 1.75em 0 0.45em 0;
   letter-spacing: -0.008em;
 }
@@ -85,13 +85,13 @@ const sanitizedContent = computed(() => {
   font-size: 1.0625rem;
   font-weight: 700;
   line-height: 1.5;
-  color: #1f2937;
+  color: var(--text-heading);
   margin: 1.5em 0 0.4em 0;
 }
 
 /* ---- Links: dark with green underline accent ---- */
 .bbc-prose a {
-  color: #141414;
+  color: var(--text-heading);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -102,7 +102,7 @@ const sanitizedContent = computed(() => {
 
 .bbc-prose a:hover {
   color: #16a34a;
-  text-decoration-color: #141414;
+  text-decoration-color: var(--text-heading);
 }
 
 /* ---- Bold / italic ---- */
@@ -174,7 +174,7 @@ const sanitizedContent = computed(() => {
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 600;
-  color: #141414;
+  color: var(--text-heading);
 }
 
 /* ---- Images and figures: generous spacing ---- */
@@ -210,7 +210,7 @@ const sanitizedContent = computed(() => {
   background: #f3f4f6;
   padding: 0.15em 0.45em;
   border-radius: 3px;
-  color: #1f2937;
+  color: var(--text-heading);
 }
 
 .bbc-prose pre {
@@ -242,14 +242,14 @@ const sanitizedContent = computed(() => {
   font-weight: 700;
   padding: 10px 14px;
   border-bottom: 2px solid #d1d5db;
-  color: #141414;
+  color: var(--text-heading);
   background: #f9fafb;
 }
 
 .bbc-prose td {
   padding: 10px 14px;
   border-bottom: 1px solid #f3f4f6;
-  color: #383838;
+  color: var(--text-body);
 }
 
 /* ---- Embedded media ---- */
@@ -388,5 +388,41 @@ const sanitizedContent = computed(() => {
   .bbc-prose h6 {
     color: #000;
   }
+}
+
+/* ---- Dark mode ---- */
+:root.dark .bbc-prose {
+  color: #d1d5db;
+}
+
+:root.dark .bbc-prose h1,
+:root.dark .bbc-prose h2,
+:root.dark .bbc-prose h3,
+:root.dark .bbc-prose h4,
+:root.dark .bbc-prose h5,
+:root.dark .bbc-prose h6 {
+  color: #e5e7eb;
+}
+
+:root.dark .bbc-prose blockquote {
+  background: #111111;
+  border-left-color: #4ade80;
+  color: #9ca3af;
+}
+
+:root.dark .bbc-prose a {
+  color: #4ade80;
+}
+
+:root.dark .bbc-prose a:hover {
+  color: #86efac;
+}
+
+:root.dark .bbc-prose .article-intro {
+  color: #d1d5db;
+}
+
+:root.dark .bbc-prose figcaption {
+  color: #9ca3af;
 }
 </style>

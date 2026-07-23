@@ -216,7 +216,6 @@ definePageMeta({
 
 <style scoped>
 .bbc-home {
-  background: #fff;
   padding: 0;
 }
 
@@ -247,14 +246,14 @@ definePageMeta({
   padding-top: 16px;
   padding-bottom: 14px;
   border-top: 3px solid #16a34a;
-  border-bottom: 2px solid #141414;
+  border-bottom: 2px solid var(--text-heading);
 }
 
 .bbc-section-title {
   font-size: 1.25rem;
   font-weight: 800;
   line-height: 1.2;
-  color: #141414;
+  color: var(--text-heading);
   margin: 0;
   letter-spacing: -0.012em;
 }
@@ -310,7 +309,7 @@ definePageMeta({
 
 /* ---- Skeleton cards — use shared .skeleton-pulse from main.css ---- */
 .bbc-card-skeleton {
-  background: #fff;
+  background: var(--bg-card);
   border-radius: 6px;
   overflow: hidden;
 }

@@ -661,7 +661,7 @@ definePageMeta({
 }
 
 .search-breadcrumb-current {
-  color: #141414;
+  color: var(--text-heading);
   font-weight: 700;
 }
 
@@ -706,7 +706,7 @@ definePageMeta({
   border: 1.5px solid #d1d5db;
   border-radius: 8px;
   font-size: 1rem;
-  color: #141414;
+  color: var(--text-heading);
   background: #fff;
   outline: none;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
@@ -727,14 +727,14 @@ definePageMeta({
    =================================================================== */
 .search-stats {
   font-size: 0.9375rem;
-  color: #545658;
+  color: var(--text-muted);
   margin: 0;
   line-height: 1.5;
 }
 
 .search-stats-count {
   font-weight: 800;
-  color: #141414;
+  color: var(--text-heading);
 }
 
 .search-stats-time {
@@ -784,7 +784,7 @@ definePageMeta({
 
 .search-tab--active {
   background: #fff;
-  color: #141414;
+  color: var(--text-heading);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
@@ -820,7 +820,7 @@ definePageMeta({
   padding: 7px 32px 7px 12px;
   font-size: 0.8125rem;
   font-weight: 500;
-  color: #141414;
+  color: var(--text-heading);
   background: #fff;
   border: 1.5px solid #d1d5db;
   border-radius: 6px;
@@ -849,7 +849,7 @@ definePageMeta({
 .search-section-label {
   font-size: 0.875rem;
   font-weight: 700;
-  color: #141414;
+  color: var(--text-heading);
   margin: 0 0 16px 0;
   padding-bottom: 10px;
   border-bottom: 2px solid #141414;
@@ -978,7 +978,7 @@ definePageMeta({
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.35;
-  color: #141414;
+  color: var(--text-heading);
   margin: 0 0 6px 0;
 }
 
@@ -998,7 +998,7 @@ definePageMeta({
 .search-result-excerpt {
   font-size: 0.8125rem;
   line-height: 1.5;
-  color: #545658;
+  color: var(--text-muted);
   margin: 0 0 10px 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -1018,7 +1018,7 @@ definePageMeta({
 
 .search-result-author {
   font-weight: 600;
-  color: #545658;
+  color: var(--text-muted);
 }
 
 .search-result-views {
@@ -1030,7 +1030,7 @@ definePageMeta({
    =================================================================== */
 :deep(.search-highlight) {
   background: #fef08a;
-  color: #141414;
+  color: var(--text-heading);
   padding: 1px 2px;
   border-radius: 2px;
   font-weight: 700;
@@ -1139,7 +1139,7 @@ definePageMeta({
 .search-presearch-title {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #141414;
+  color: var(--text-heading);
   margin: 0 0 8px 0;
 }
 

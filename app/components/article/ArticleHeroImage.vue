@@ -326,4 +326,14 @@ const categoryDisplayName = computed(() => {
     font-size: 0.875rem;
   }
 }
+
+/* ---- Dark mode ---- */
+:root.dark .hero-card-wrapper {
+  background: #1a1a1a;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+:root.dark .hero-media {
+  background: #27272a;
+}
 </style>

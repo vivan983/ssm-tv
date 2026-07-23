@@ -118,7 +118,7 @@ function formatViewCount(count: number) {
 /* ---- Card wrapper — now a NuxtLink (renders as <a>), subtle lift on hover ---- */
 .bbc-card {
   display: block;
-  background: #fff;
+  background: var(--bg-card);
   border-radius: 6px;
   overflow: hidden;
   text-decoration: none;
@@ -135,7 +135,7 @@ function formatViewCount(count: number) {
   display: block;
   aspect-ratio: 16 / 9;
   overflow: hidden;
-  background: #e8e8e8;
+  background: var(--border-color);
 }
 
 .bbc-card-img {
@@ -169,7 +169,7 @@ function formatViewCount(count: number) {
 
 /* ---- Card body — text content below image ---- */
 .bbc-card-body {
-  padding: 16px 0 0 0;
+  padding: 16px 14px 14px 14px;
 }
 
 /* ---- Section / Category label ---- */
@@ -196,7 +196,7 @@ function formatViewCount(count: number) {
   font-size: 1rem;
   font-weight: 700;
   line-height: 1.35;
-  color: #141414;
+  color: var(--text-heading);
   margin: 0 0 6px 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -212,7 +212,7 @@ function formatViewCount(count: number) {
 .bbc-card-excerpt {
   font-size: 0.8125rem;
   line-height: 1.45;
-  color: #545658;
+  color: var(--text-muted);
   margin: 0 0 10px 0;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -226,7 +226,7 @@ function formatViewCount(count: number) {
   align-items: center;
   gap: 10px;
   font-size: 0.75rem;
-  color: #545658;
+  color: var(--text-muted);
 }
 
 .bbc-card-time {
@@ -243,5 +243,32 @@ function formatViewCount(count: number) {
     font-size: 0.875rem;
     -webkit-line-clamp: 2;
   }
+}
+
+/* ---- Dark mode ---- */
+:root.dark .bbc-card {
+  background: #1a1a1a;
+}
+
+:root.dark .bbc-card-title {
+  color: #e5e7eb;
+}
+
+:root.dark .bbc-card:hover .bbc-card-title {
+  color: #4ade80;
+}
+
+:root.dark .bbc-card-excerpt,
+:root.dark .bbc-card-meta,
+:root.dark .bbc-card-time {
+  color: #9ca3af;
+}
+
+:root.dark .bbc-card-section {
+  color: #4ade80;
+}
+
+:root.dark .bbc-card-img-wrap {
+  background: #27272a;
 }
 </style>

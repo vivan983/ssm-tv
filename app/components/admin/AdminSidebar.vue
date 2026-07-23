@@ -3,7 +3,7 @@
     <!-- Logo -->
     <div class="px-5 py-5 border-b border-white/10">
       <NuxtLink to="/admin" class="flex items-center gap-3">
-        <img src="/logo-ssm.png" alt="SSM TV" class="h-7 w-auto brightness-0 invert" />
+        <img src="/logo.png" alt="SSM TV" class="h-7 w-auto brightness-0 invert" />
         <span class="text-xs text-neutral-400 uppercase tracking-wider font-semibold">CMS</span>
       </NuxtLink>
     </div>

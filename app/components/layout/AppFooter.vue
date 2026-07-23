@@ -10,7 +10,7 @@
           <!-- Logo — BUG FIX: use localePath to preserve language context -->
           <NuxtLink :to="localePath('/')" class="block" aria-label="SSM TV">
             <img
-              src="/logo-ssm.png"
+              src="/logo.png"
               alt="SSM TV"
               width="200"
               height="80"

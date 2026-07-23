@@ -74,7 +74,7 @@
           :class="{ 'hidden': !playing }"
         >
           <img
-            src="/logo-ssm.png"
+            src="/logo.png"
             alt="SSM TV"
             class="h-8 lg:h-10 w-auto opacity-90 drop-shadow-lg"
           />

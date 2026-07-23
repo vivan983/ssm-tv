@@ -2,7 +2,7 @@
   <div class="login-page">
     <!-- Logo -->
     <div class="login-logo">
-      <img src="/logo-ssm.png" alt="SSM TV" class="login-logo-img" />
+      <img src="/logo.png" alt="SSM TV" class="login-logo-img" />
     </div>
 
     <!-- Card -->

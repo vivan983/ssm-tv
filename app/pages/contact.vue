@@ -309,13 +309,13 @@ definePageMeta({ layout: 'default' })
 
 /* ---- Hero ---- */
 .contact-hero { padding: 48px 0 36px 0; text-align: center; max-width: 640px; margin: 0 auto; }
-.contact-hero-title { font-size: 2rem; font-weight: 800; color: #141414; margin: 0 0 12px 0; letter-spacing: -0.02em; }
+.contact-hero-title { font-size: 2rem; font-weight: 800; color: var(--text-heading); margin: 0 0 12px 0; letter-spacing: -0.02em; }
 @media (min-width: 768px) { .contact-hero-title { font-size: 2.5rem; } }
-.contact-hero-sub { font-size: 1rem; line-height: 1.65; color: #545658; margin: 0; }
+.contact-hero-sub { font-size: 1rem; line-height: 1.65; color: var(--text-muted); margin: 0; }
 
 /* ---- Section ---- */
 .contact-section { margin-bottom: 56px; }
-.contact-section-title { font-size: 1.25rem; font-weight: 800; color: #141414; margin: 0 0 24px 0; }
+.contact-section-title { font-size: 1.25rem; font-weight: 800; color: var(--text-heading); margin: 0 0 24px 0; }
 .contact-section-title--center { text-align: center; }
 
 /* ---- Info Cards Grid ---- */
@@ -333,10 +333,10 @@ definePageMeta({ layout: 'default' })
 .contact-info-icon--red   { background: #fef2f2; color: #dc2626; }
 .contact-info-icon--amber { background: #fffbeb; color: #d97706; }
 
-.contact-info-title { font-size: 0.8125rem; font-weight: 700; color: #141414; margin: 0 0 4px 0; }
+.contact-info-title { font-size: 0.8125rem; font-weight: 700; color: var(--text-heading); margin: 0 0 4px 0; }
 .contact-info-link { font-size: 0.875rem; font-weight: 600; color: #16a34a; text-decoration: none; }
 .contact-info-link:hover { text-decoration: underline; }
-.contact-info-text { font-size: 0.875rem; color: #545658; margin: 0; }
+.contact-info-text { font-size: 0.875rem; color: var(--text-muted); margin: 0; }
 .contact-info-sub { font-size: 0.8125rem; color: #9ca3af; margin: 2px 0 0 0; }
 
 /* ---- Main Grid (Form + Sidebar) ---- */
@@ -355,16 +355,16 @@ definePageMeta({ layout: 'default' })
 .contact-success { text-align: center; padding: 32px 16px; }
 .contact-success-icon { width: 56px; height: 56px; border-radius: 50%; background: #f0fdf4; color: #16a34a; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto; }
 .contact-success-icon svg { width: 28px; height: 28px; }
-.contact-success-title { font-size: 1.125rem; font-weight: 800; color: #141414; margin: 0 0 6px 0; }
-.contact-success-text { font-size: 0.875rem; color: #545658; margin: 0; max-width: 320px; margin: 0 auto; }
+.contact-success-title { font-size: 1.125rem; font-weight: 800; color: var(--text-heading); margin: 0 0 6px 0; }
+.contact-success-text { font-size: 0.875rem; color: var(--text-muted); margin: 0; max-width: 320px; margin: 0 auto; }
 
 /* ---- Sidebar ---- */
 .contact-sidebar { display: flex; flex-direction: column; gap: 16px; }
 
 .contact-sidebar-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px; }
 .contact-sidebar-card--accent { border-color: #bbf7d0; background: #f9fefb; }
-.contact-sidebar-title { font-size: 0.9375rem; font-weight: 700; color: #141414; margin: 0 0 8px 0; }
-.contact-sidebar-text { font-size: 0.8125rem; line-height: 1.5; color: #545658; margin: 0 0 12px 0; }
+.contact-sidebar-title { font-size: 0.9375rem; font-weight: 700; color: var(--text-heading); margin: 0 0 8px 0; }
+.contact-sidebar-text { font-size: 0.8125rem; line-height: 1.5; color: var(--text-muted); margin: 0 0 12px 0; }
 .contact-sidebar-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.8125rem; font-weight: 600; color: #16a34a; text-decoration: none; }
 .contact-sidebar-link:hover { text-decoration: underline; }
 
@@ -375,8 +375,8 @@ definePageMeta({ layout: 'default' })
 /* ---- Advertising CTA ---- */
 .contact-advertise { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 1px solid #bbf7d0; border-radius: 12px; padding: 36px 28px; text-align: center; }
 .contact-advertise-content { max-width: 560px; margin: 0 auto; }
-.contact-advertise-title { font-size: 1.375rem; font-weight: 800; color: #141414; margin: 0 0 10px 0; }
-.contact-advertise-text { font-size: 0.9375rem; line-height: 1.6; color: #545658; margin: 0 0 20px 0; }
+.contact-advertise-title { font-size: 1.375rem; font-weight: 800; color: var(--text-heading); margin: 0 0 10px 0; }
+.contact-advertise-text { font-size: 0.9375rem; line-height: 1.6; color: var(--text-muted); margin: 0 0 20px 0; }
 .contact-advertise-actions { display: flex; justify-content: center; }
 .contact-advertise-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #16a34a; color: #fff; font-size: 0.9375rem; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.2s ease; }
 .contact-advertise-btn:hover { background: #15803d; box-shadow: 0 2px 12px rgba(22,163,74,0.3); transform: translateY(-1px); }
@@ -386,9 +386,9 @@ definePageMeta({ layout: 'default' })
 /* ---- FAQ ---- */
 .contact-faq { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 2px; }
 .contact-faq-item { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
-.contact-faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; font-size: 0.875rem; font-weight: 600; color: #141414; background: #fff; border: none; cursor: pointer; text-align: left; transition: background 0.15s ease; }
+.contact-faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 20px; font-size: 0.875rem; font-weight: 600; color: var(--text-heading); background: #fff; border: none; cursor: pointer; text-align: left; transition: background 0.15s ease; }
 .contact-faq-q:hover { background: #f9fafb; }
 .contact-faq-chevron { width: 16px; height: 16px; flex-shrink: 0; color: #9ca3af; transition: transform 0.2s ease; }
 .contact-faq-a { padding: 0 20px 18px 20px; }
-.contact-faq-a p { font-size: 0.8125rem; line-height: 1.6; color: #545658; margin: 0; }
+.contact-faq-a p { font-size: 0.8125rem; line-height: 1.6; color: var(--text-muted); margin: 0; }
 </style>

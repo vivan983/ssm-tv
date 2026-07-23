@@ -1,5 +1,6 @@
 <template>
   <div class="policy-page">
+    <div class="policy-card">
     <!-- Last updated banner -->
     <p class="policy-updated">Iheruka kuvugururwa: 16 Nyakanga 2026</p>
 
@@ -236,6 +237,7 @@
         </p>
       </div>
     </section>
+    </div>
   </div>
 </template>
 
@@ -261,7 +263,7 @@ definePageMeta({
 .policy-page {
   max-width: 768px;
   margin: 0 auto;
-  padding: 40px 16px 64px 16px;
+  padding: 32px 16px 48px 16px;
 }
 
 @media (min-width: 768px) {
@@ -271,10 +273,66 @@ definePageMeta({
   }
 }
 
+/* ---- White card wrapper ---- */
+.policy-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 40px 32px 44px 32px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+:root.dark .policy-card {
+  background: #1a1a1a;
+  border-color: #27272a;
+}
+
+:root.dark .policy-title,
+:root.dark .policy-section-title,
+:root.dark .policy-subsection-title { color: #e5e7eb; }
+
+:root.dark .policy-intro { color: #d1d5db; }
+
+:root.dark .policy-section-text,
+:root.dark .policy-list li { color: #d1d5db; }
+
+:root.dark .policy-contact {
+  background: #111111;
+  border-color: #27272a;
+}
+
+:root.dark .policy-contact-item,
+:root.dark .policy-contact-item strong { color: #d1d5db; }
+
+:root.dark .policy-updated { color: #d1d5db; }
+
+:root.dark .policy-heading { border-bottom-color: #374151; }
+
+:root.dark .policy-code {
+  background: #27272a;
+  color: #f87171;
+}
+
+:root.dark .policy-link:hover { color: #4ade80; }
+
+:root.dark .policy-table thead { background: #111111; }
+
+:root.dark .policy-table th { color: #d1d5db; border-bottom-color: #374151; }
+
+:root.dark .policy-table td { color: #d1d5db; border-bottom-color: #1f2937; }
+
+:root.dark .policy-table-wrap { border-color: #27272a; }
+
+@media (min-width: 640px) {
+  .policy-card {
+    padding: 52px 44px 56px 44px;
+  }
+}
+
 /* ---- Last updated ---- */
 .policy-updated {
   font-size: 0.8125rem;
-  color: #9ca3af;
+  color: #d1d5db;
   margin: 0 0 8px 0;
   font-style: italic;
 }

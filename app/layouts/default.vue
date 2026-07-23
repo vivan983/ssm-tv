@@ -2,7 +2,7 @@
   <div class="min-h-screen flex flex-col">
     <AppHeader />
     <BreakingNewsBar />
-    <main class="flex-1">
+    <main class="flex-1 bg-neutral-100 dark:bg-[#0a0a0a]">
       <slot />
     </main>
     <Footer />
